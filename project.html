@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookbook Project</title>
+</head>
+<body style="font-family:Arial; text-align:center; background:#fff8f0;">
+
+  <h2>🍲 Simple Cookbook</h2>
+
+  <input id="name" placeholder="Recipe Name"><br><br>
+  <input id="ing" placeholder="Ingredients (comma separated)"><br><br>
+  <input id="inst" placeholder="Instructions"><br><br>
+  <button onclick="addRecipe()">Add Recipe</button>
+
+  <h3>Recipe List</h3>
+  <div id="list"></div>
+
+<script>
+  let recipes = [];
+
+  function addRecipe() {
+    let n = document.getElementById("name").value;
+    let i = document.getElementById("ing").value;
+    let ins = document.getElementById("inst").value;
+
+    if(n=="" || i=="" || ins=="") {
+      alert("Fill all fields!");
+      return;
+    }
+
+    recipes.push({name:n, ingredients:i, instructions:ins});
+    display();
+  }
+
+  function display() {
+    let out = "";
+    recipes.forEach(r => {
+      out += `<p><b>${r.name}</b><br>Ingredients: ${r.ingredients}<br>Steps: ${r.instructions}</p><hr>`;
+    });
+    document.getElementById("list").innerHTML = out;
+  }
+</script>
+
+</body>
+</html>
